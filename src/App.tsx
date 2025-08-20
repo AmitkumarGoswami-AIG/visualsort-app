@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Controls from './components/Controls';
 import Visualizer from './components/Visualizer';
 import AlgorithmInfo from './components/AlgorithmInfo';
+import FlowChart from './components/FlowChart';
 import { useSorting } from './hooks/useSorting';
 import type { SortingAlgorithm } from './types';
 
@@ -68,6 +69,8 @@ function App() {
       />
       
       <Visualizer array={array} />
+      
+      <FlowChart algorithm={selectedAlgorithm} />
       
       <AlgorithmInfo
         algorithm={selectedAlgorithm}
