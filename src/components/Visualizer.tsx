@@ -1,12 +1,11 @@
-import React from 'react';
 import { ArrayElement } from '../types';
 
 interface VisualizerProps {
   array: ArrayElement[];
 }
 
-const Visualizer: React.FC<VisualizerProps> = ({ array }) => {
-  const maxValue = Math.max(...array.map(el => el.value));
+const Visualizer = ({ array }: VisualizerProps) => {
+  const maxValue = array.length > 0 ? Math.max(...array.map(el => el.value)) : 1;
   const containerHeight = 400;
 
   const getBarColor = (state: ArrayElement['state']) => {

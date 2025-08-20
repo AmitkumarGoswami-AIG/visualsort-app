@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Controls from './components/Controls';
 import Visualizer from './components/Visualizer';
 import AlgorithmInfo from './components/AlgorithmInfo';
 import { useSorting } from './hooks/useSorting';
+import type { SortingAlgorithm } from './types';
 
 function App() {
   const {
@@ -40,7 +41,7 @@ function App() {
     }
   };
 
-  const handleAlgorithmSelect = (algorithm: any) => {
+  const handleAlgorithmSelect = (algorithm: SortingAlgorithm) => {
     if (isPlaying) {
       pauseSorting();
     }

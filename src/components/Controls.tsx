@@ -1,4 +1,3 @@
-import React from 'react';
 import { SortingAlgorithm } from '../types';
 import { ALGORITHMS, MIN_SPEED, MAX_SPEED, MIN_ARRAY_SIZE, MAX_ARRAY_SIZE } from '../utils/constants';
 
@@ -17,7 +16,7 @@ interface ControlsProps {
   onStepBackward: () => void;
 }
 
-const Controls: React.FC<ControlsProps> = ({
+const Controls = ({
   selectedAlgorithm,
   isPlaying,
   speed,
@@ -30,7 +29,7 @@ const Controls: React.FC<ControlsProps> = ({
   onArraySizeChange,
   onStepForward,
   onStepBackward,
-}) => {
+}: ControlsProps) => {
   return (
     <div className="bg-white border-b border-border-light p-4">
       <div className="max-w-6xl mx-auto">

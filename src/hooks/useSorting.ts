@@ -10,7 +10,7 @@ export function useSorting() {
   const [speed, setSpeed] = useState(DEFAULT_SPEED);
   const [arraySize, setArraySize] = useState(DEFAULT_ARRAY_SIZE);
   const [selectedAlgorithm, setSelectedAlgorithm] = useState<SortingAlgorithm | null>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<number | null>(null);
 
   const generateRandomArray = useCallback((size: number = arraySize) => {
     const newArray: ArrayElement[] = [];

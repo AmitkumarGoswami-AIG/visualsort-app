@@ -1,6 +1,6 @@
-# VisualSort.app - Visual Sorting Algorithms
+# Visual Sorting Algorithms
 
-🌐 **Live Demo**: [https://visualsort.app](https://visualsort.app)
+🌐 **Live Demo**: [https://yourusername.github.io/visual-sorting-app](https://yourusername.github.io/visual-sorting-app)
 
 A modern, interactive web application that provides real-time visual representations of various sorting algorithms. Built with React, TypeScript, and Tailwind CSS.
 
@@ -46,6 +46,30 @@ npm run dev
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+- `npm run deploy` - Deploy to GitHub Pages
+
+## Deployment
+
+This project is configured for GitHub Pages deployment:
+
+1. **Prerequisites**: Ensure you have `gh-pages` installed (already included in dev dependencies)
+
+2. **Deploy to GitHub Pages**:
+   ```bash
+   npm run deploy
+   ```
+
+3. **Enable GitHub Pages**:
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Select "Deploy from a branch"
+   - Choose "gh-pages" branch
+   - Select "/ (root)" folder
+   - Save
+
+4. **Access your app**: `https://yourusername.github.io/visual-sorting-app`
+
+**Note**: Replace `yourusername` with your actual GitHub username in the configuration files.
 
 ## Usage
 

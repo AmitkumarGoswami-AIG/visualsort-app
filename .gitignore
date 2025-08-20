@@ -98,6 +98,7 @@ temp/
 
 # Vercel
 .vercel
+vercel.json
 
 # Local Netlify folder
 .netlify

@@ -1,4 +1,3 @@
-import React from 'react';
 import { SortingAlgorithm, SortingStep } from '../types';
 
 interface AlgorithmInfoProps {
@@ -8,12 +7,12 @@ interface AlgorithmInfoProps {
   currentStepIndex: number;
 }
 
-const AlgorithmInfo: React.FC<AlgorithmInfoProps> = ({ 
+const AlgorithmInfo = ({ 
   algorithm, 
   currentStep, 
   totalSteps, 
   currentStepIndex 
-}) => {
+}: AlgorithmInfoProps) => {
   if (!algorithm) {
     return (
       <div className="bg-secondary-light border-t border-border-light p-6">
