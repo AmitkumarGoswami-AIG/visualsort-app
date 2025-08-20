@@ -91,6 +91,13 @@ const FlowChart = ({ algorithm }: FlowChartProps) => {
 
   const renderSelectionSortFlowchart = () => (
     <svg viewBox="0 0 800 600" className="w-full h-auto">
+      {/* Arrowhead marker definition */}
+      <defs>
+        <marker id="arrowhead-sel" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#374151" />
+        </marker>
+      </defs>
+      
       {/* Start */}
       <rect x="350" y="20" width="100" height="40" rx="20" fill="#4F46E5" />
       <text x="400" y="45" textAnchor="middle" fill="white" className="text-sm font-medium">START</text>
@@ -123,18 +130,28 @@ const FlowChart = ({ algorithm }: FlowChartProps) => {
       <rect x="350" y="500" width="100" height="40" rx="20" fill="#4F46E5" />
       <text x="400" y="525" textAnchor="middle" fill="white" className="text-sm font-medium">END</text>
       
-      {/* Arrows */}
-      <line x1="400" y1="60" x2="400" y2="80" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="120" x2="400" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="200" x2="400" y2="220" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="260" x2="400" y2="280" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="340" x2="400" y2="360" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="400" x2="400" y2="420" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+      {/* Main flow arrows */}
+      <line x1="400" y1="60" x2="400" y2="80" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
+      <line x1="400" y1="120" x2="400" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
+      <line x1="400" y1="200" x2="400" y2="220" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
+      <line x1="400" y1="260" x2="400" y2="280" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
+      <line x1="400" y1="340" x2="400" y2="360" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
+      <line x1="400" y1="400" x2="400" y2="420" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
       
-      {/* Loop back */}
-      <path d="M 400 460 Q 200 460 200 170 Q 200 140 340 170" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 470 310 Q 520 310 520 445 Q 520 460 400 460" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 460 170 Q 600 170 600 525 Q 600 540 450 525" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
+      {/* Loop back arrows - using straight lines */}
+      <line x1="400" y1="460" x2="180" y2="460" stroke="#374151" strokeWidth="2" />
+      <line x1="180" y1="460" x2="180" y2="170" stroke="#374151" strokeWidth="2" />
+      <line x1="180" y1="170" x2="340" y2="170" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
+      
+      {/* No swap path */}
+      <line x1="470" y1="310" x2="520" y2="310" stroke="#374151" strokeWidth="2" />
+      <line x1="520" y1="310" x2="520" y2="445" stroke="#374151" strokeWidth="2" />
+      <line x1="520" y1="445" x2="450" y2="445" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
+      
+      {/* End condition path */}
+      <line x1="460" y1="170" x2="600" y2="170" stroke="#374151" strokeWidth="2" />
+      <line x1="600" y1="170" x2="600" y2="525" stroke="#374151" strokeWidth="2" />
+      <line x1="600" y1="525" x2="450" y2="525" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-sel)" />
       
       {/* Labels */}
       <text x="420" y="185" className="text-xs fill-green-600">Yes</text>
@@ -146,6 +163,13 @@ const FlowChart = ({ algorithm }: FlowChartProps) => {
 
   const renderInsertionSortFlowchart = () => (
     <svg viewBox="0 0 800 600" className="w-full h-auto">
+      {/* Arrowhead marker definition */}
+      <defs>
+        <marker id="arrowhead-ins" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#374151" />
+        </marker>
+      </defs>
+      
       {/* Start */}
       <rect x="350" y="20" width="100" height="40" rx="20" fill="#4F46E5" />
       <text x="400" y="45" textAnchor="middle" fill="white" className="text-sm font-medium">START</text>
@@ -182,20 +206,34 @@ const FlowChart = ({ algorithm }: FlowChartProps) => {
       <rect x="350" y="540" width="100" height="40" rx="20" fill="#4F46E5" />
       <text x="400" y="565" textAnchor="middle" fill="white" className="text-sm font-medium">END</text>
       
-      {/* Arrows */}
-      <line x1="400" y1="60" x2="400" y2="80" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="120" x2="400" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="200" x2="400" y2="220" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="260" x2="400" y2="280" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="340" x2="400" y2="360" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="400" x2="400" y2="420" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="460" x2="400" y2="480" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+      {/* Main flow arrows */}
+      <line x1="400" y1="60" x2="400" y2="80" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      <line x1="400" y1="120" x2="400" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      <line x1="400" y1="200" x2="400" y2="220" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      <line x1="400" y1="260" x2="400" y2="280" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      <line x1="400" y1="340" x2="400" y2="360" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      <line x1="400" y1="400" x2="400" y2="420" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      <line x1="400" y1="460" x2="400" y2="480" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
       
-      {/* Loop backs */}
-      <path d="M 400 520 Q 150 520 150 170 Q 150 140 340 170" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 320 310 Q 250 310 250 385 Q 250 400 300 385" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 480 310 Q 550 310 550 445 Q 550 460 475 445" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 460 170 Q 650 170 650 565 Q 650 580 450 565" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
+      {/* Loop back arrows - using straight lines */}
+      <line x1="400" y1="520" x2="150" y2="520" stroke="#374151" strokeWidth="2" />
+      <line x1="150" y1="520" x2="150" y2="170" stroke="#374151" strokeWidth="2" />
+      <line x1="150" y1="170" x2="340" y2="170" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      
+      {/* While loop back */}
+      <line x1="320" y1="310" x2="250" y2="310" stroke="#374151" strokeWidth="2" />
+      <line x1="250" y1="310" x2="250" y2="385" stroke="#374151" strokeWidth="2" />
+      <line x1="250" y1="385" x2="300" y2="385" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      
+      {/* No shift path */}
+      <line x1="480" y1="310" x2="550" y2="310" stroke="#374151" strokeWidth="2" />
+      <line x1="550" y1="310" x2="550" y2="445" stroke="#374151" strokeWidth="2" />
+      <line x1="550" y1="445" x2="475" y2="445" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
+      
+      {/* End condition path */}
+      <line x1="460" y1="170" x2="650" y2="170" stroke="#374151" strokeWidth="2" />
+      <line x1="650" y1="170" x2="650" y2="565" stroke="#374151" strokeWidth="2" />
+      <line x1="650" y1="565" x2="450" y2="565" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-ins)" />
       
       {/* Labels */}
       <text x="420" y="185" className="text-xs fill-green-600">Yes</text>
@@ -207,6 +245,13 @@ const FlowChart = ({ algorithm }: FlowChartProps) => {
 
   const renderQuickSortFlowchart = () => (
     <svg viewBox="0 0 800 650" className="w-full h-auto">
+      {/* Arrowhead marker definition */}
+      <defs>
+        <marker id="arrowhead-quick" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#374151" />
+        </marker>
+      </defs>
+      
       {/* Start */}
       <rect x="350" y="20" width="100" height="40" rx="20" fill="#4F46E5" />
       <text x="400" y="45" textAnchor="middle" fill="white" className="text-sm font-medium">START</text>
@@ -237,18 +282,20 @@ const FlowChart = ({ algorithm }: FlowChartProps) => {
       <rect x="350" y="420" width="100" height="40" rx="20" fill="#4F46E5" />
       <text x="400" y="445" textAnchor="middle" fill="white" className="text-sm font-medium">END</text>
       
-      {/* Arrows */}
-      <line x1="400" y1="60" x2="400" y2="80" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="140" x2="400" y2="160" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="200" x2="400" y2="220" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="350" y1="260" x2="290" y2="300" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="450" y1="260" x2="510" y2="300" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="240" y1="340" x2="380" y2="370" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="560" y1="340" x2="420" y2="370" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="390" x2="400" y2="420" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+      {/* Main flow arrows */}
+      <line x1="400" y1="60" x2="400" y2="80" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
+      <line x1="400" y1="140" x2="400" y2="160" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
+      <line x1="400" y1="200" x2="400" y2="220" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
+      <line x1="350" y1="260" x2="290" y2="300" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
+      <line x1="450" y1="260" x2="510" y2="300" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
+      <line x1="240" y1="340" x2="380" y2="370" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
+      <line x1="560" y1="340" x2="420" y2="370" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
+      <line x1="400" y1="390" x2="400" y2="420" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
+      
+      {/* Base case path - using straight lines */}
       <line x1="470" y1="110" x2="650" y2="110" stroke="#374151" strokeWidth="2" />
       <line x1="650" y1="110" x2="650" y2="445" stroke="#374151" strokeWidth="2" />
-      <line x1="650" y1="445" x2="450" y2="445" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+      <line x1="650" y1="445" x2="450" y2="445" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-quick)" />
       
       {/* Labels */}
       <text x="420" y="125" className="text-xs fill-green-600">Yes</text>
