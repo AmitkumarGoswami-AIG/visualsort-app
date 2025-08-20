@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yourusername.github.io/visual-sorting-app/sitemap.xml
+Sitemap: https://amitkumargoswami-aig.github.io/visualsort-app/sitemap.xml
