@@ -16,6 +16,13 @@ const FlowChart = ({ algorithm }: FlowChartProps) => {
 
   const renderBubbleSortFlowchart = () => (
     <svg viewBox="0 0 800 600" className="w-full h-auto">
+      {/* Arrowhead marker definition */}
+      <defs>
+        <marker id="arrowhead-bubble" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#374151" />
+        </marker>
+      </defs>
+      
       {/* Start */}
       <rect x="350" y="20" width="100" height="40" rx="20" fill="#4F46E5" />
       <text x="400" y="45" textAnchor="middle" fill="white" className="text-sm font-medium">START</text>
@@ -56,28 +63,40 @@ const FlowChart = ({ algorithm }: FlowChartProps) => {
       <rect x="350" y="560" width="100" height="40" rx="20" fill="#4F46E5" />
       <text x="400" y="585" textAnchor="middle" fill="white" className="text-sm font-medium">END</text>
       
-      {/* Arrows */}
-      <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-          <polygon points="0 0, 10 3.5, 0 7" fill="#374151" />
-        </marker>
-      </defs>
+      {/* Main flow arrows */}
+      <line x1="400" y1="60" x2="400" y2="80" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      <line x1="400" y1="120" x2="400" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      <line x1="400" y1="200" x2="400" y2="220" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      <line x1="400" y1="260" x2="400" y2="280" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      <line x1="400" y1="340" x2="400" y2="360" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      <line x1="400" y1="420" x2="400" y2="440" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      <line x1="400" y1="480" x2="400" y2="500" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
       
-      {/* Flow arrows */}
-      <line x1="400" y1="60" x2="400" y2="80" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="120" x2="400" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="200" x2="400" y2="220" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="260" x2="400" y2="280" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="340" x2="400" y2="360" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="420" x2="400" y2="440" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
-      <line x1="400" y1="480" x2="400" y2="500" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead)" />
+      {/* Loop back arrows - using straight lines */}
+      {/* Inner loop (j++) back to inner condition */}
+      <line x1="400" y1="540" x2="200" y2="540" stroke="#374151" strokeWidth="2" />
+      <line x1="200" y1="540" x2="200" y2="310" stroke="#374151" strokeWidth="2" />
+      <line x1="200" y1="310" x2="340" y2="310" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
       
-      {/* Loop back arrows */}
-      <path d="M 400 540 Q 200 540 200 310 Q 200 280 340 310" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 460 170 Q 600 170 600 400" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 600 440 Q 600 500 600 140 Q 600 120 460 140" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 470 390 Q 520 390 520 525 Q 520 540 400 540" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-      <path d="M 460 310 Q 700 310 700 580 Q 700 600 450 580" stroke="#374151" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
+      {/* Outer loop start path */}
+      <line x1="460" y1="170" x2="600" y2="170" stroke="#374151" strokeWidth="2" />
+      <line x1="600" y1="170" x2="600" y2="400" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      
+      {/* i++ back to outer condition */}
+      <line x1="600" y1="440" x2="600" y2="550" stroke="#374151" strokeWidth="2" />
+      <line x1="600" y1="550" x2="720" y2="550" stroke="#374151" strokeWidth="2" />
+      <line x1="720" y1="550" x2="720" y2="140" stroke="#374151" strokeWidth="2" />
+      <line x1="720" y1="140" x2="460" y2="140" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      
+      {/* No swap path */}
+      <line x1="470" y1="390" x2="520" y2="390" stroke="#374151" strokeWidth="2" />
+      <line x1="520" y1="390" x2="520" y2="525" stroke="#374151" strokeWidth="2" />
+      <line x1="520" y1="525" x2="450" y2="525" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
+      
+      {/* Inner loop end path */}
+      <line x1="460" y1="310" x2="750" y2="310" stroke="#374151" strokeWidth="2" />
+      <line x1="750" y1="310" x2="750" y2="580" stroke="#374151" strokeWidth="2" />
+      <line x1="750" y1="580" x2="450" y2="580" stroke="#374151" strokeWidth="2" markerEnd="url(#arrowhead-bubble)" />
       
       {/* Labels */}
       <text x="420" y="185" className="text-xs fill-green-600">Yes</text>
